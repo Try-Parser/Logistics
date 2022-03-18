@@ -1,7 +1,7 @@
 # Logistics
 
 # run
-## docker-compose up
+* docker-compose up
 
 # API
-## GateWay: http://localhost:8080/api
+* GateWay: http://localhost:8080/api
