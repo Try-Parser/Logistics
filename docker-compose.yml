@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+
+  parcel-api:
+    image: parcel-api:dev
+    build:
+      context: ./
+      dockerfile: dev
+    container_name: parcel-service
+    volumes:
+      - ./:/usr/src/parcel-api
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    stdin_open: true
+    tty: true
+    ports:
+      - "8080:8080"
+      - "35729:35729"
+      - "5000:5000"
+    restart: always

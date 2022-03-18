@@ -1,0 +1,19 @@
+FROM openjdk:11
+
+ENV HOME=/usr/src/parcel-api
+
+RUN mkdir -p $HOME
+
+ADD . /usr/src/parcel-api
+
+WORKDIR $HOME
+
+ENV TZ=Asia/Hong_Kong
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+ENV HOST 0.0.0.0
+EXPOSE 8080
+EXPOSE 5000
+EXPOSE 35729
+
+ENTRYPOINT ["./mvnw", "spring-boot:run", "-Dspring-boot.run.jvmArguments=\"-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5000\""]
